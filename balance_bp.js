@@ -28,8 +28,9 @@ client.query({
 })
 // print out their public key
 .then(res => {  
-  console.log('block producer\'s publicKey', res.data.blocks.nodes[0].creator); 
-  return res.data.blocks.nodes[0].creator;
+  const publicKey = res.data.blocks.nodes[0].creator;
+  console.log('block producer\'s publicKey', publicKey); 
+  return publicKey;
 })
 // get balance of who made the last block
 .then(creator => {
@@ -45,5 +46,5 @@ client.query({
     }`
   });
 })
-.then(res => console.log('block producer balance', res.data.wallet.balance.total))
+.then(res => console.log('block producer\' balance', res.data.wallet.balance.total))
 .catch(error => console.error(error));
